@@ -42,3 +42,19 @@ This script displays a random greeting message every time you open a new termina
 ## Usage
 
 Once you've installed the script, simply open a new terminal, and you'll see a random greeting message.
+
+### Configuration
+
+You can customize the type of greeting message by setting the `GREETING_TYPE` environment variable in your `~/.config/fish/config.fish` file.
+
+*   To display only book quotes, add the following line:
+    ```fish
+    set -x GREETING_TYPE "book"
+    ```
+
+*   To display only song refrains, add the following line:
+    ```fish
+    set -x GREETING_TYPE "song"
+    ```
+
+If the `GREETING_TYPE` variable is not set, a random message from all available quotes and refrains will be displayed.

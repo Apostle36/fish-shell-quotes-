@@ -1,6 +1,6 @@
 function greeting
-    # Greeting messages
-    set powered_msgs \
+    # Book quotes
+    set book_quotes \
         "Be yourself; everyone else is already taken. - Oscar Wilde" \
         "So many books, so little time. - Frank Zappa" \
         "A room without books is like a body without a soul. - Marcus Tullius Cicero" \
@@ -36,11 +36,49 @@ function greeting
         "The journey of a thousand miles begins with a single step. - Lao Tzu" \
         "If you go home with somebody, and they don't have books, don't fuck 'em! - John Waters"
 
-    # Pick a random quote
-    set count (count $powered_msgs)
-    set random_index (random 1 $count)
-    set random_quote $powered_msgs[$random_index]
+    # Song refrains
+    set song_refrains \
+        "Who let the dogs out? Who, who, who, who?" \
+        "Get outta my dreams, get into my car." \
+        "Is this the real life? Is this just fantasy?" \
+        "You gotta fight... for your right... to party!" \
+        "Hello, is it me you're looking for?" \
+        "Shake it off, shake it off!" \
+        "She Loves You, yeah, yeah, yeah." \
+        "Imagine all the people..." \
+        "Don't worry, be happy." \
+        "Mamma Mia, here I go again!" \
+        "We are the champions, my friends." \
+        "Another one bites the dust." \
+        "It's raining men! Hallelujah!" \
+        "Never gonna give you up." \
+        "Livin' la vida loca." \
+        "It's a beautiful day." \
+        "I just called to say I love you." \
+        "You spin me right 'round, baby, right 'round." \
+        "I'm too sexy for my shirt." \
+        "I wanna dance with somebody." \
+        "Here comes the sun." \
+        "All the small things." \
+        "What's love got to do with it?" \
+        "I got sunshine on a cloudy day." \
+        "Billie Jean is not my lover." \
+        "Baby one more time."
 
-    # Print the random quote
-    echo $random_quote
+    set -l messages
+    if test "$GREETING_TYPE" = "book"
+        set messages $book_quotes
+    else if test "$GREETING_TYPE" = "song"
+        set messages $song_refrains
+    else
+        set messages $book_quotes $song_refrains
+    end
+
+    # Pick a random message
+    set count (count $messages)
+    set random_index (random 1 $count)
+    set random_message $messages[$random_index]
+
+    # Print the random message
+    echo $random_message
 end
